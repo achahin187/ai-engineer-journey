@@ -11,6 +11,7 @@
 2. MCP server بـ Go (read-only): list_routes, find_controller, get_schema, search_symbol + Agent بأدوات + اختبار حالات الفشل.
 3. خط evals قابل لإعادة الاستخدام (golden dataset + LLM-as-judge) من أول أسبوع، يخدم 1 و2.
 
+النتيجة المطلوبة: فهم + تطبيق + شغل مرفوع على GitHub (عدة repos عامة تعرض شغلي) عشان أبقى Software Engineer/Developer وAI Engineer في نفس الوقت. مفيش تقديم على شغل قريب، فالعمق أهم من السرعة. المسمى الرسمي في الشغل مايتغيرش.
 الأولويات: LLM APIs، context engineering، RAG، agents، MCP، evals، observability، تكلفة، guardrails، نشر. للسوق: structured output، tool calling، streaming، retries، tracing.
 اختياري: Change Impact (من وصف issue لقائمة الملفات المتأثرة، ground truth من PRs مدموجة).
 
