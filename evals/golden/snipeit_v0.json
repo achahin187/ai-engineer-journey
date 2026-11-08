@@ -1,0 +1,60 @@
+{
+  "version": "v0-draft",
+  "repo": "https://github.com/snipe/snipe-it",
+  "commit": "297b1d4",
+  "note": "Draft. expected_files = files a correct answer MUST cite. Lines to be added after review.",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "route-to-controller",
+      "question": "ايه الـ route والـ controller method اللي بيعالج POST لعمل checkout لـ asset من الـ web UI؟",
+      "expected_files": [
+        "routes/web/hardware.php",
+        "app/Http/Controllers/Assets/AssetCheckoutController.php"
+      ],
+      "expected_symbols": ["hardware.checkout.store", "AssetCheckoutController::store"]
+    },
+    {
+      "id": "q2",
+      "type": "model-logic",
+      "question": "فين الـ logic اللي بيسجل الـ checkout فعليا على الـ Asset model؟",
+      "expected_files": ["app/Models/Asset.php"],
+      "expected_symbols": ["Asset::checkOut"]
+    },
+    {
+      "id": "q3",
+      "type": "multi-file-flow",
+      "question": "مين بيبعت الـ notification/email لما asset يتعمله checkout، وإيه الـ classes المشاركة؟",
+      "expected_files": [
+        "app/Listeners/CheckoutableListener.php",
+        "app/Notifications/CheckoutAssetNotification.php",
+        "app/Mail/CheckoutAssetMail.php"
+      ],
+      "expected_symbols": ["CheckoutableListener::onCheckedOut"]
+    },
+    {
+      "id": "q4",
+      "type": "authorization",
+      "question": "إزاي بيتحقق من صلاحية المستخدم قبل ما يعمل checkout لـ asset؟",
+      "expected_files": [
+        "app/Http/Controllers/Assets/AssetCheckoutController.php",
+        "app/Policies/AssetPolicy.php",
+        "app/Policies/CheckoutablePermissionsPolicy.php"
+      ],
+      "expected_symbols": ["authorize('checkout')", "CheckoutablePermissionsPolicy::checkout"]
+    },
+    {
+      "id": "q5",
+      "type": "schema",
+      "question": "جدول assets اتعرّف فين، وإيه الـ migrations اللي عدّلت عليه؟",
+      "expected_files": ["database/migrations/2013_11_15_190327_create_assets_table.php"],
+      "also_relevant": [
+        "database/migrations/2013_11_20_130830_add_status_id_on_assets_table.php",
+        "database/migrations/2013_11_25_101308_add_warrantee_to_assets_table.php",
+        "database/migrations/2015_11_08_035832_add_company_id_to_assets_table.php",
+        "database/migrations/2023_01_21_225350_add_eol_date_on_assets_table.php"
+      ],
+      "expected_symbols": ["Schema::create('assets')"]
+    }
+  ]
+}
